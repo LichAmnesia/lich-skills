@@ -1,6 +1,6 @@
 # Gemini CLI setup
 
-Install [Gemini CLI](https://github.com/google-gemini/gemini-cli), then wire up the `lich-skills` collection as an extension or via `GEMINI.md`.
+Install [Gemini CLI](https://github.com/google-gemini/gemini-cli), then install `lich-skills` as a first-class extension. This repo ships a [`gemini-extension.json`](../gemini-extension.json) manifest at the root, so the one-line `gemini extensions install` command just works.
 
 ## 1. Install Gemini CLI
 
@@ -30,27 +30,53 @@ Reference: <https://github.com/google-gemini/gemini-cli>
 
 ---
 
-## 2. Install the lich-skills collection
+## 2. Install the lich-skills extension
 
-Gemini CLI reads per-user configuration from `~/.gemini/`. Skills ship as plain Markdown, so there are two equivalent paths.
+### Option A — One-line install (recommended)
 
-### Option A — Extensions directory (recommended)
+```bash
+gemini extensions install https://github.com/LichAmnesia/lich-skills
+```
 
-Gemini CLI supports extensions loaded from `~/.gemini/extensions/<name>/`. Clone the repo there:
+Gemini CLI clones the repo into `~/.gemini/extensions/lich-skills`, reads the `gemini-extension.json` manifest at the root, and auto-discovers every `skills/*/SKILL.md` inside the extension. The model activates skills contextually when a user request matches a `description` frontmatter.
+
+Verify:
+
+```bash
+gemini extensions list
+```
+
+You should see `lich-skills` listed.
+
+### Option B — Manual clone
+
+If you want to edit the skills locally or you need a specific branch:
 
 ```bash
 mkdir -p ~/.gemini/extensions
 git clone https://github.com/LichAmnesia/lich-skills.git ~/.gemini/extensions/lich-skills
 ```
 
-Each `SKILL.md` is then discoverable as context when Gemini CLI loads its extension set.
+Gemini CLI still picks up the extension because the `gemini-extension.json` manifest is inside the cloned directory.
 
-### Option B — GEMINI.md include
+### Option C — Per-project
 
-Gemini CLI reads `~/.gemini/GEMINI.md` as persistent context. Clone anywhere, then reference the skills directory from that file:
+For a project-scoped install that lives inside the repo you are working on:
 
 ```bash
-git clone https://github.com/LichAmnesia/lich-skills.git ~/ws/oss/lich-skills
+cd /path/to/your/project
+mkdir -p .gemini/extensions
+git clone https://github.com/LichAmnesia/lich-skills.git .gemini/extensions/lich-skills
+```
+
+Gemini CLI merges project-level extensions with user-level ones on session start.
+
+### Option D — GEMINI.md include (fallback)
+
+If you do not want an extension install for some reason, you can reference the skills directory from `~/.gemini/GEMINI.md` as persistent context:
+
+```bash
+git clone https://github.com/LichAmnesia/lich-skills.git ~/projects/lich-skills
 ```
 
 Append to `~/.gemini/GEMINI.md`:
@@ -59,32 +85,24 @@ Append to `~/.gemini/GEMINI.md`:
 # Skills
 
 Refer to the skill definitions under:
-`~/ws/oss/lich-skills/skills/`
+`~/projects/lich-skills/skills/`
 
 - spec-driven-dev — full SDLC workflow (Spec → Plan → Build → Test → Review → Ship)
 - tavily-search   — web search + extraction via Tavily
 - nano-banana     — text-to-image and image edits via Nano Banana 2
 ```
 
-### Option C — Per-project
-
-```bash
-cd /path/to/your/project
-mkdir -p .gemini
-git clone https://github.com/LichAmnesia/lich-skills.git .gemini/skills
-```
-
-Then reference `.gemini/skills/` from a project-local `GEMINI.md`.
+This path loses automatic skill activation, so prefer Option A unless you have a reason not to.
 
 ---
 
 ## 3. Verify
 
-Launch Gemini CLI and ask it to list its loaded context:
+Launch Gemini CLI and ask it to list loaded skills:
 
 ```bash
 gemini
-> what skills are loaded from lich-skills?
+> /extensions list
 ```
 
 Or invoke one directly:
@@ -98,6 +116,12 @@ Or invoke one directly:
 ## 4. Update
 
 ```bash
+gemini extensions update lich-skills
+```
+
+Or, for manual clones:
+
+```bash
 cd ~/.gemini/extensions/lich-skills
 git pull --rebase
 ```
@@ -107,7 +131,11 @@ git pull --rebase
 ## 5. Uninstall
 
 ```bash
-rm -rf ~/.gemini/extensions/lich-skills
+gemini extensions uninstall lich-skills
 ```
 
-Remove any `GEMINI.md` references you added in Option B.
+Or:
+
+```bash
+rm -rf ~/.gemini/extensions/lich-skills
+```

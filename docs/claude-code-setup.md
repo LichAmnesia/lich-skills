@@ -77,8 +77,8 @@ Add `.claude/skills/lich-skills` to that project's `.gitignore` unless you want 
 ### Alternative: symlink from an existing clone
 
 ```bash
-git clone https://github.com/LichAmnesia/lich-skills.git ~/ws/oss/lich-skills
-ln -s ~/ws/oss/lich-skills ~/.claude/skills/lich-skills
+git clone https://github.com/LichAmnesia/lich-skills.git ~/projects/lich-skills
+ln -s ~/projects/lich-skills ~/.claude/skills/lich-skills
 ```
 
 ---

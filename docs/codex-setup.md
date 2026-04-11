@@ -44,7 +44,7 @@ git clone https://github.com/LichAmnesia/lich-skills.git ~/.codex/skills/lich-sk
 Codex CLI honors `AGENTS.md` files for persistent instructions. If you prefer keeping the repo outside `~/.codex`:
 
 ```bash
-git clone https://github.com/LichAmnesia/lich-skills.git ~/ws/oss/lich-skills
+git clone https://github.com/LichAmnesia/lich-skills.git ~/projects/lich-skills
 ```
 
 Then add the following block to `~/.codex/AGENTS.md` (create it if missing):
@@ -52,7 +52,7 @@ Then add the following block to `~/.codex/AGENTS.md` (create it if missing):
 ```md
 ## Skills
 
-Skill definitions live at `~/ws/oss/lich-skills/skills/`:
+Skill definitions live at `~/projects/lich-skills/skills/`:
 
 - spec-driven-dev — Spec → Plan → Build → Test → Review → Ship workflow
 - tavily-search   — Web search + extraction via Tavily

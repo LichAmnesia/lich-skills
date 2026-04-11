@@ -2,7 +2,9 @@
 
 > Personal skill collection for **Claude Code**, **Gemini CLI**, and **OpenAI Codex** — by [@LichAmnesia](https://github.com/LichAmnesia).
 
-一套个人向的 AI 编程代理技能集，覆盖规格驱动开发、网页搜索、图片生成三条主线。Telegraph-style, opinionated, no filler.
+Telegraph-style, opinionated, no filler. One flagship SDLC skill plus two high-leverage utility skills.
+
+中文版：[README-zh.md](README-zh.md)
 
 ---
 
@@ -34,22 +36,38 @@ All skills read credentials from environment variables (`TAVILY_API_KEY`, `GEMIN
 
 ---
 
-## Quick start
+## Quick install
 
 <details open>
-<summary><b>Claude Code</b> (recommended)</summary>
+<summary><b>Claude Code — plugin marketplace (one command)</b></summary>
 
-Install Claude Code, then clone this repo into your global skills directory:
+Inside a running Claude Code session:
+
+```
+/plugin marketplace add LichAmnesia/lich-skills
+/plugin install lich-skills@lich-skills
+```
+
+Done. All three skills become available immediately. Verify:
+
+```
+/skills
+```
+
+</details>
+
+<details>
+<summary><b>Claude Code — git clone</b></summary>
 
 ```bash
-# 1. Install Claude Code (native installer)
+# 1. Install Claude Code (if not already)
 curl -fsSL https://claude.ai/install.sh | bash
 # or: brew install --cask claude-code
 
-# 2. Install the skill collection
+# 2. Clone into the global skills directory
 git clone https://github.com/LichAmnesia/lich-skills.git ~/.claude/skills/lich-skills
 
-# 3. Verify
+# 3. Start Claude Code
 claude
 > /skills
 ```
@@ -59,14 +77,22 @@ Full guide: [`docs/claude-code-setup.md`](docs/claude-code-setup.md).
 </details>
 
 <details>
-<summary><b>Gemini CLI</b></summary>
+<summary><b>Gemini CLI — extensions install (one command)</b></summary>
 
 ```bash
-# 1. Install Gemini CLI
-npm install -g @google/gemini-cli
+gemini extensions install https://github.com/LichAmnesia/lich-skills
+```
 
-# 2. Install the skill collection as an extension
-mkdir -p ~/.gemini/extensions
+This repo ships a [`gemini-extension.json`](gemini-extension.json) at the root, so Gemini CLI installs it as a first-class extension and auto-discovers every `skills/*/SKILL.md`. Verify:
+
+```bash
+gemini extensions list
+```
+
+Manual clone fallback:
+
+```bash
+npm install -g @google/gemini-cli
 git clone https://github.com/LichAmnesia/lich-skills.git ~/.gemini/extensions/lich-skills
 ```
 
@@ -90,6 +116,16 @@ git clone https://github.com/LichAmnesia/lich-skills.git ~/.codex/skills/lich-sk
 Full guide: [`docs/codex-setup.md`](docs/codex-setup.md).
 
 </details>
+
+---
+
+## Why the one-liners work
+
+- **`/plugin marketplace add LichAmnesia/lich-skills`** — Claude Code reads [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) at the repo root. That file declares the repo as a plugin marketplace and points the plugin back at its GitHub source.
+- **`/plugin install lich-skills@lich-skills`** — format is `<plugin-name>@<marketplace-name>`. Both resolve from the same marketplace manifest, which is why the name appears twice.
+- **`gemini extensions install <github-url>`** — Gemini CLI's native `extensions` subcommand clones any public GitHub repo that has a `gemini-extension.json` at its root, then auto-discovers bundled skills from `skills/*/SKILL.md`. The manifest is what makes this one-liner work — without it, Gemini CLI refuses to install the repo as an extension.
+- **[geminicli.com/extensions/](https://geminicli.com/extensions/) listing** — the public extension gallery sources third-party extensions from GitHub repos that have the same `gemini-extension.json` manifest. Having the manifest is necessary (though not sufficient) to appear there.
+- **`git clone` into `~/.claude/skills/`** — the lowest-common-denominator path. Claude Code reads every `SKILL.md` under `~/.claude/skills/**` on session start. No marketplace required.
 
 ---
 

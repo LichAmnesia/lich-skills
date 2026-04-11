@@ -1,0 +1,19 @@
+{
+  "name": "lich-skills",
+  "version": "0.1.0",
+  "description": "LichAmnesia's open-source skills for Gemini CLI — spec-driven development workflow, Tavily web search, Nano Banana image generation.",
+  "author": "Shen Huang (LichAmnesia)",
+  "homepage": "https://github.com/LichAmnesia/lich-skills",
+  "repository": "https://github.com/LichAmnesia/lich-skills",
+  "license": "MIT",
+  "contextFileName": "CLAUDE.md",
+  "keywords": [
+    "skills",
+    "spec-driven-development",
+    "sdd",
+    "tavily",
+    "nano-banana",
+    "web-search",
+    "image-generation"
+  ]
+}

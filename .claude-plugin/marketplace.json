@@ -1,35 +1,22 @@
 {
   "name": "lich-skills",
-  "displayName": "Lich Skills Collection",
-  "description": "LichAmnesia's open-source Claude Code skills — flagship spec-driven-dev workflow plus Tavily search and Nano Banana image generation",
-  "version": "0.1.0",
   "owner": {
     "name": "Shen Huang (LichAmnesia)",
     "url": "https://github.com/LichAmnesia"
   },
-  "repository": "https://github.com/LichAmnesia/lich-skills",
-  "license": "MIT",
-  "keywords": [
-    "claude-code",
-    "skills",
-    "spec-driven-development",
-    "sdd",
-    "tavily",
-    "nano-banana",
-    "image-generation",
-    "web-search"
-  ],
-  "categories": [
-    "Software Engineering",
-    "Productivity",
-    "Content Creation"
-  ],
+  "metadata": {
+    "description": "LichAmnesia's open-source Claude Code skills — flagship spec-driven-dev workflow plus Tavily search and Nano Banana image generation.",
+    "version": "0.1.0",
+    "license": "MIT"
+  },
   "plugins": [
     {
       "name": "lich-skills",
-      "description": "LichAmnesia's Claude Code skills collection",
-      "version": "0.1.0",
-      "source": "./"
+      "source": {
+        "source": "github",
+        "repo": "LichAmnesia/lich-skills"
+      },
+      "description": "Spec → Plan → Build → Test → Review → Ship workflow + Tavily web search + Nano Banana image generation."
     }
   ]
 }
