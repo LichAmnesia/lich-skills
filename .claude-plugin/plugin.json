@@ -1,0 +1,21 @@
+{
+  "name": "lich-skills",
+  "version": "0.1.0",
+  "description": "LichAmnesia's open-source Claude Code skills collection — spec-driven development, web search, image generation",
+  "author": {
+    "name": "Shen Huang (LichAmnesia)",
+    "url": "https://github.com/LichAmnesia"
+  },
+  "repository": "https://github.com/LichAmnesia/lich-skills",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "spec-driven-development",
+    "tavily",
+    "nano-banana",
+    "gemini",
+    "sdd"
+  ],
+  "skills": "./skills"
+}

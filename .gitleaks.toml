@@ -1,0 +1,30 @@
+# gitleaks config for lich-skills
+# Run: gitleaks detect --config .gitleaks.toml --source . --verbose
+# Or via pre-commit hook (see scripts/pre-commit).
+
+title = "lich-skills gitleaks config"
+
+# Extend the default ruleset shipped with gitleaks.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Global allowlist for lich-skills"
+paths = [
+  '''\.git/''',
+  '''node_modules/''',
+  '''__pycache__/''',
+  '''\.gitleaks\.toml''',
+]
+
+# Regex allowlist for documentation placeholders. These are NOT real secrets —
+# they are example strings used in README/skill docs. Keep this list small and
+# intentional; prefer making examples obviously fake (e.g. YOUR_API_KEY_HERE).
+regexes = [
+  '''YOUR_[A-Z_]+_KEY''',
+  '''YOUR_[A-Z_]+_TOKEN''',
+  '''sk-xxxxxxxxxxxxxxxx''',
+  '''tvly-xxxxxxxxxxxxxxxx''',
+  '''AIzaSy[A-Za-z0-9_-]{0,4}\.\.\.''',
+  '''example\.com''',
+]

@@ -1,0 +1,43 @@
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Secrets — paranoia layer, gitleaks still runs
+*.pem
+*.key
+*.p12
+*.keystore
+*secret*
+*SECRET*
+*token*.txt
+*TOKEN*.txt
+credentials.json
+service-account*.json
+
+# Local plugin overrides
+.claude/*.local.md
+.claude/settings.local.json
+
+# Build artifacts
+dist/
+build/
+*.log

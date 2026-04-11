@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  secret-scan:
+    name: gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITLEAKS_CONFIG: .gitleaks.toml
+
+  skill-lint:
+    name: skill format lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify every skill has SKILL.md with frontmatter
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          fail=0
+          for dir in skills/*/; do
+            name="$(basename "$dir")"
+            file="$dir/SKILL.md"
+            if [ ! -f "$file" ]; then
+              echo "::error file=$dir::missing SKILL.md"
+              fail=1
+              continue
+            fi
+            if ! head -1 "$file" | grep -q '^---$'; then
+              echo "::error file=$file::missing YAML frontmatter"
+              fail=1
+              continue
+            fi
+            if ! grep -q '^name:' "$file"; then
+              echo "::error file=$file::frontmatter missing 'name:'"
+              fail=1
+            fi
+            if ! grep -q '^description:' "$file"; then
+              echo "::error file=$file::frontmatter missing 'description:'"
+              fail=1
+            fi
+            echo "ok: $name"
+          done
+          exit $fail
+
+  python-syntax:
+    name: python syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile all skill Python scripts
+        run: |
+          set -euo pipefail
+          find skills -type f -name "*.py" -print0 | xargs -0 -n1 python -m py_compile
