@@ -24,6 +24,34 @@ One skill, six phases, explicit exit criteria per step. See [`skills/spec-driven
 
 ---
 
+## The debug-hypothesis loop
+
+```
+                          ┌─────────────────────────────┐
+                          │    all hypotheses rejected?  │
+                          │    back to OBSERVE           │
+                          └──────────┬──────────────────┘
+                                     │
+  OBSERVE  ──▶  HYPOTHESIZE  ──▶  EXPERIMENT  ──▶  CONCLUDE
+     │              │                  │               │
+     ▼              ▼                  ▼               ▼
+  Reproduce      List 3-5          One test,       Root cause
+  the bug,       causes +          max 5 lines,    confirmed
+  collect        evidence           falsify         → fix +
+  symptoms       for each          don't confirm   regression test
+     │              │                  │               │
+     │              │           ┌──────┘               │
+     │              │           │ rejected?            │
+     │              │           ▼                      │
+     │              │     next hypothesis              │
+     │              │                                  │
+     └──────────────┴──── everything in DEBUG.md ──────┘
+```
+
+Scientific-method debugging. Prevents the #1 AI failure: bulldozing through a wrong theory. See [`skills/debug-hypothesis/`](skills/debug-hypothesis/).
+
+---
+
 ## Skills
 
 | Skill | What it does |

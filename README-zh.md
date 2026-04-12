@@ -2,7 +2,7 @@
 
 > 面向 **Claude Code**、**Gemini CLI**、**OpenAI Codex** 的个人技能集 —— 作者 [@LichAmnesia](https://github.com/LichAmnesia)。
 
-电报风格，观点明确，零废话。一个旗舰 SDLC 技能 + 两个高杠杆工具技能。
+电报风格，观点明确，零废话。工程判断力技能 + 高杠杆工具。
 
 English: [README.md](README.md)
 
@@ -21,6 +21,34 @@ English: [README.md](README.md)
 ```
 
 一个技能、六个阶段、每步都有明确的退出条件。详见 [`skills/spec-driven-dev/`](skills/spec-driven-dev/)。
+
+---
+
+## debug-hypothesis 循环
+
+```
+                          ┌─────────────────────────────┐
+                          │    所有假设都被否定？         │
+                          │    回到 OBSERVE 重新收集      │
+                          └──────────┬──────────────────┘
+                                     │
+  OBSERVE  ──▶  HYPOTHESIZE  ──▶  EXPERIMENT  ──▶  CONCLUDE
+     │              │                  │               │
+     ▼              ▼                  ▼               ▼
+  复现 bug，     列 3-5 个          每次实验         根因确认
+  收集症状       可能原因 +         最多改 5 行，    → 写 fix +
+                 支持/反对          证伪，不是       回归测试
+                 证据              证实
+     │              │                  │               │
+     │              │           ┌──────┘               │
+     │              │           │ 被否定？              │
+     │              │           ▼                      │
+     │              │     换下一个假设                  │
+     │              │                                  │
+     └──────────────┴──── 全部写到 DEBUG.md ────────────┘
+```
+
+科学方法 debug。防止 AI 最常见的失败模式：在错误方向上蛮干。详见 [`skills/debug-hypothesis/`](skills/debug-hypothesis/)。
 
 ---
 
