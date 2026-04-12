@@ -15,5 +15,12 @@
     "nano-banana",
     "web-search",
     "image-generation"
-  ]
+  ],
+  "mcpServers": {
+    "lich-skills": {
+      "command": "node",
+      "args": ["${extensionPath}/index.js"],
+      "cwd": "${extensionPath}"
+    }
+  }
 }
