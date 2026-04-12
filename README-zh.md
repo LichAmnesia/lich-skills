@@ -29,6 +29,7 @@ English: [README.md](README.md)
 | 技能 | 作用 |
 |---|---|
 | [`spec-driven-dev`](skills/spec-driven-dev/) | 完整软件开发生命周期：Spec → Plan → Build → Test → Review → Ship。反合理化表、验证关卡、原子提交。 |
+| [`debug-hypothesis`](skills/debug-hypothesis/) | 科学方法 debug：Observe → Hypothesize → Experiment → Conclude。反"蛮干"规则、最多 5 行实验、强制 `DEBUG.md` 证据链。 |
 | [`tavily-search`](skills/tavily-search/) | 通过 [Tavily](https://tavily.com) API 做网页搜索 + 正文抽取。用于事实核查、文档查询、带引用的研究。 |
 | [`nano-banana`](skills/nano-banana/) | 文生图 + 图片编辑，基于 Google Nano Banana 2 (`gemini-3.1-flash-image-preview`)，支持 `512 / 1K / 2K / 4K`。 |
 

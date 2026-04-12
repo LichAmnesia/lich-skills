@@ -2,7 +2,7 @@
 
 > Personal skill collection for **Claude Code**, **Gemini CLI**, and **OpenAI Codex** — by [@LichAmnesia](https://github.com/LichAmnesia).
 
-Telegraph-style, opinionated, no filler. One flagship SDLC skill plus two high-leverage utility skills.
+Telegraph-style, opinionated, no filler. Engineering judgment skills plus high-leverage utility tools.
 
 中文版：[README-zh.md](README-zh.md)
 
@@ -29,6 +29,7 @@ One skill, six phases, explicit exit criteria per step. See [`skills/spec-driven
 | Skill | What it does |
 |---|---|
 | [`spec-driven-dev`](skills/spec-driven-dev/) | Full SDLC workflow: Spec → Plan → Build → Test → Review → Ship. Anti-rationalization tables, verification gates, atomic commits. |
+| [`debug-hypothesis`](skills/debug-hypothesis/) | Scientific-method debugging: Observe → Hypothesize → Experiment → Conclude. Anti-bulldozer rules, max 5-line experiments, mandatory `DEBUG.md` evidence trail. |
 | [`tavily-search`](skills/tavily-search/) | Web search + content extraction via the [Tavily](https://tavily.com) API. Use for fact-checking, docs lookup, source-cited research. |
 | [`nano-banana`](skills/nano-banana/) | Text-to-image and image editing via Google's Nano Banana 2 (`gemini-3.1-flash-image-preview`). Supports `512 / 1K / 2K / 4K`. |
 
