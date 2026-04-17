@@ -52,12 +52,42 @@ Scientific-method debugging. Prevents the #1 AI failure: bulldozing through a wr
 
 ---
 
+## The aggregate-N-sources loop
+
+```
+                    Trajectories-as-environment
+            ╔════════════════════════════════════════╗
+            ║   src_1   src_2   src_3  ...   src_N   ║
+            ║   [..]    [..]    [..]         [..]    ║
+            ║                                        ║
+            ║   not concatenated. not summarized.    ║
+            ║              navigated.                ║
+            ╚═══════════════════╤════════════════════╝
+                                ▼
+            ┌────────────────────────────────────────┐
+            │       AGGREGATOR  (lite agent)         │
+            │   inspect_file / inspect_section       │
+            │   search_sources / cross_pack_check    │
+            │                                        │
+            │   notes = []  (every claim → path:line)│
+            │   budget = 25 → loop until coverage    │
+            └───────────────────┬────────────────────┘
+                                ▼
+                  pack/  brief.md / findings.md /
+                         sources.tsv / _aggregation_log.md
+```
+
+Agentic aggregation for long-horizon research. N raw notes → 1 structured pack with full `path:line` provenance + cross-source contradictions surfaced. See [`skills/wiki-aggregate/`](skills/wiki-aggregate/).
+
+---
+
 ## Skills
 
 | Skill | What it does |
 |---|---|
 | [`spec-driven-dev`](skills/spec-driven-dev/) | Full SDLC workflow: Spec → Plan → Build → Test → Review → Ship. Anti-rationalization tables, verification gates, atomic commits. |
 | [`debug-hypothesis`](skills/debug-hypothesis/) | Scientific-method debugging: Observe → Hypothesize → Experiment → Conclude. Anti-bulldozer rules, max 5-line experiments, mandatory `DEBUG.md` evidence trail. |
+| [`wiki-aggregate`](skills/wiki-aggregate/) | Lift N≥3 raw research artifacts into one structured pack via agentic aggregation. Cheap-pass + tool-budgeted aggregator loop, every claim has `path:line` provenance, cross-source contradictions logged. |
 | [`tavily-search`](skills/tavily-search/) | Web search + content extraction via the [Tavily](https://tavily.com) API. Use for fact-checking, docs lookup, source-cited research. |
 | [`nano-banana`](skills/nano-banana/) | Text-to-image and image editing via Google's Nano Banana 2 (`gemini-3.1-flash-image-preview`). Supports `512 / 1K / 2K / 4K`. |
 
@@ -77,7 +107,7 @@ Inside a running Claude Code session:
 /plugin install lich-skills@lich-skills
 ```
 
-Done. All three skills become available immediately. Verify:
+Done. All five skills become available immediately. Verify:
 
 ```
 /skills

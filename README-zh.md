@@ -52,12 +52,41 @@ English: [README.md](README.md)
 
 ---
 
+## wiki-aggregate 循环
+
+```
+                  把 N 个源当成一个 environment
+            ╔════════════════════════════════════════╗
+            ║   src_1   src_2   src_3  ...   src_N   ║
+            ║   [..]    [..]    [..]         [..]    ║
+            ║                                        ║
+            ║   不拼接。不总结。导航。               ║
+            ╚═══════════════════╤════════════════════╝
+                                ▼
+            ┌────────────────────────────────────────┐
+            │       AGGREGATOR  (lite agent)         │
+            │   inspect_file / inspect_section       │
+            │   search_sources / cross_pack_check    │
+            │                                        │
+            │   notes = []  (每条结论都有 path:行号) │
+            │   预算 25 → 循环到覆盖率达标           │
+            └───────────────────┬────────────────────┘
+                                ▼
+                  pack/  brief.md / findings.md /
+                         sources.tsv / _aggregation_log.md
+```
+
+长程研究的 agentic aggregation 协议。N 份原始素材 → 1 份结构化 pack，每条 claim 带 `path:行号` 溯源，跨源矛盾自动暴露。详见 [`skills/wiki-aggregate/`](skills/wiki-aggregate/)。
+
+---
+
 ## 技能列表
 
 | 技能 | 作用 |
 |---|---|
 | [`spec-driven-dev`](skills/spec-driven-dev/) | 完整软件开发生命周期：Spec → Plan → Build → Test → Review → Ship。反合理化表、验证关卡、原子提交。 |
 | [`debug-hypothesis`](skills/debug-hypothesis/) | 科学方法 debug：Observe → Hypothesize → Experiment → Conclude。反"蛮干"规则、最多 5 行实验、强制 `DEBUG.md` 证据链。 |
+| [`wiki-aggregate`](skills/wiki-aggregate/) | 把 N≥3 份原始素材聚合成一个结构化 pack，agentic aggregation 协议。Cheap-pass + 工具预算的 aggregator loop，每条 claim 带 `path:行号` 溯源，跨源矛盾自动暴露。 |
 | [`tavily-search`](skills/tavily-search/) | 通过 [Tavily](https://tavily.com) API 做网页搜索 + 正文抽取。用于事实核查、文档查询、带引用的研究。 |
 | [`nano-banana`](skills/nano-banana/) | 文生图 + 图片编辑，基于 Google Nano Banana 2 (`gemini-3.1-flash-image-preview`)，支持 `512 / 1K / 2K / 4K`。 |
 
@@ -77,7 +106,7 @@ English: [README.md](README.md)
 /plugin install lich-skills@lich-skills
 ```
 
-三个技能立即可用。验证：
+五个技能立即可用。验证：
 
 ```
 /skills
@@ -186,6 +215,7 @@ lich-skills/
     │       ├── plan.md
     │       ├── review.md
     │       └── ship.md
+    ├── wiki-aggregate/          # N 源 → 1 pack（agentic aggregation）
     ├── tavily-search/            # Tavily 网页搜索
     │   ├── SKILL.md
     │   └── scripts/search.py
