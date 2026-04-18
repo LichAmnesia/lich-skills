@@ -213,3 +213,9 @@ PRs welcome. New skills should be **specific**, **verifiable**, and **minimal**.
 ## License
 
 [MIT](LICENSE) © 2026 Shen Huang ([@LichAmnesia](https://github.com/LichAmnesia))
+
+---
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=LichAmnesia/lich-skills&type=Date)](https://www.star-history.com/#LichAmnesia/lich-skills&Date)
