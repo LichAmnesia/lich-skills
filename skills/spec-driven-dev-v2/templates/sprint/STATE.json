@@ -1,0 +1,15 @@
+{
+  "$schema": "sprint-state/v1",
+  "sprint_id": "sprints-001-<slug>",
+  "project_id": "projects-001-<slug>",
+  "status": "active",
+  "current_task": "TK-001",
+  "current_round": 0,
+  "next_action": "build",
+  "worktree": "../wt-TK-001",
+  "branch": "tk-001-<slug>",
+  "tasks_merged": [],
+  "tasks_blocked": [],
+  "last_updated": "YYYY-MM-DDTHH:MM:SSZ",
+  "notes": "status ∈ {draft, active, blocked, closed, abandoned}. next_action ∈ {build, verify, review, modify, merge, close_sprint}. current_round=0 means task has not entered review yet."
+}

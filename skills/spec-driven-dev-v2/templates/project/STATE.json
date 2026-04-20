@@ -1,0 +1,9 @@
+{
+  "$schema": "project-state/v1",
+  "project_id": "projects-001-<slug>",
+  "status": "active",
+  "current_sprint": "sprints-001-<slug>",
+  "sprints_closed": [],
+  "last_updated": "YYYY-MM-DDTHH:MM:SSZ",
+  "notes": "status ∈ {draft, active, blocked, shipped, abandoned}. sprints_closed lists slugs in close order."
+}
