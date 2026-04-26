@@ -90,6 +90,7 @@ Agentic aggregation for long-horizon research. N raw notes → 1 structured pack
 | [`wiki-aggregate`](skills/wiki-aggregate/) | Lift N≥3 raw research artifacts into one structured pack via agentic aggregation. Cheap-pass + tool-budgeted aggregator loop, every claim has `path:line` provenance, cross-source contradictions logged. |
 | [`tavily-search`](skills/tavily-search/) | Web search + content extraction via the [Tavily](https://tavily.com) API. Use for fact-checking, docs lookup, source-cited research. |
 | [`nano-banana`](skills/nano-banana/) | Text-to-image and image editing via Google's Nano Banana 2 (`gemini-3.1-flash-image-preview`). Supports `512 / 1K / 2K / 4K`. |
+| [`frontend-design`](skills/frontend-design/) | Build distinctive, production-grade frontend interfaces — bold aesthetic direction, intentional typography, and motion that avoids generic AI-slop UI. Adapted from Anthropic's official `frontend-design` skill (Apache-2.0). |
 
 All skills read credentials from environment variables (`TAVILY_API_KEY`, `GEMINI_API_KEY`, etc.) — never hardcoded.
 
@@ -107,7 +108,7 @@ Inside a running Claude Code session:
 /plugin install lich-skills@lich-skills
 ```
 
-Done. All five skills become available immediately. Verify:
+Done. All six skills become available immediately. Verify:
 
 ```
 /skills

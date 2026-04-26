@@ -1,11 +1,24 @@
 {
   "name": "lich-skills",
   "version": "0.1.0",
-  "description": "LichAmnesia's open-source skills for Gemini CLI — spec-driven development workflow, Tavily web search, Nano Banana image generation.",
+  "description": "LichAmnesia's open-source skills for Claude Code, Gemini CLI, and Codex — spec-driven development, debug-hypothesis, wiki-aggregate, Tavily search, Nano Banana image gen, and frontend-design.",
   "type": "module",
   "bin": {
     "lich-skills": "index.js"
   },
+  "keywords": [
+    "claude-code",
+    "skills",
+    "spec-driven-development",
+    "sdd",
+    "debug-hypothesis",
+    "wiki-aggregate",
+    "tavily",
+    "nano-banana",
+    "frontend-design",
+    "gemini",
+    "codex"
+  ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.6.0"
   },

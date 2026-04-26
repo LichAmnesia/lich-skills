@@ -1,6 +1,6 @@
 {
   "name": "lich-skills",
-  "description": "LichAmnesia's open-source Claude Code skills — flagship spec-driven-dev workflow plus Tavily search and Nano Banana image generation.",
+  "description": "LichAmnesia's open-source Claude Code skills — flagship spec-driven-dev workflow plus debug-hypothesis, wiki-aggregate, Tavily search, Nano Banana image generation, and frontend-design.",
   "version": "0.1.0",
   "author": {
     "name": "Shen Huang (LichAmnesia)",
@@ -14,8 +14,11 @@
     "skills",
     "spec-driven-development",
     "sdd",
+    "debug-hypothesis",
+    "wiki-aggregate",
     "tavily",
     "nano-banana",
+    "frontend-design",
     "gemini",
     "codex"
   ],

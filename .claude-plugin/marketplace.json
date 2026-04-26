@@ -5,7 +5,7 @@
     "url": "https://github.com/LichAmnesia"
   },
   "metadata": {
-    "description": "LichAmnesia's open-source Claude Code skills — flagship spec-driven-dev workflow plus Tavily search and Nano Banana image generation.",
+    "description": "LichAmnesia's open-source Claude Code skills — flagship spec-driven-dev workflow plus debug-hypothesis, wiki-aggregate, Tavily search, Nano Banana image generation, and frontend-design.",
     "version": "0.1.0",
     "license": "MIT"
   },
@@ -16,7 +16,7 @@
         "source": "github",
         "repo": "LichAmnesia/lich-skills"
       },
-      "description": "Spec → Plan → Build → Test → Review → Ship workflow + Tavily web search + Nano Banana image generation."
+      "description": "Spec → Plan → Build → Test → Review → Ship workflow + debug-hypothesis + wiki-aggregate + Tavily web search + Nano Banana image generation + frontend-design aesthetics guide."
     }
   ]
 }

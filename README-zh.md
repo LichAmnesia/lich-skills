@@ -89,6 +89,7 @@ English: [README.md](README.md)
 | [`wiki-aggregate`](skills/wiki-aggregate/) | 把 N≥3 份原始素材聚合成一个结构化 pack，agentic aggregation 协议。Cheap-pass + 工具预算的 aggregator loop，每条 claim 带 `path:行号` 溯源，跨源矛盾自动暴露。 |
 | [`tavily-search`](skills/tavily-search/) | 通过 [Tavily](https://tavily.com) API 做网页搜索 + 正文抽取。用于事实核查、文档查询、带引用的研究。 |
 | [`nano-banana`](skills/nano-banana/) | 文生图 + 图片编辑，基于 Google Nano Banana 2 (`gemini-3.1-flash-image-preview`)，支持 `512 / 1K / 2K / 4K`。 |
+| [`frontend-design`](skills/frontend-design/) | 做有辨识度、production-grade 的前端 UI —— 强调审美方向、有意图的字体选择、避免"AI slop"通用感。改编自 Anthropic 官方 `frontend-design` skill（Apache-2.0）。 |
 
 所有技能都从环境变量读取凭据（`TAVILY_API_KEY`、`GEMINI_API_KEY` 等）—— **绝不硬编码**。
 
@@ -219,9 +220,12 @@ lich-skills/
     ├── tavily-search/            # Tavily 网页搜索
     │   ├── SKILL.md
     │   └── scripts/search.py
-    └── nano-banana/              # Nano Banana 2 文生图
+    ├── nano-banana/              # Nano Banana 2 文生图
+    │   ├── SKILL.md
+    │   └── scripts/generate_image.py
+    └── frontend-design/          # 前端审美设计指南（Apache-2.0）
         ├── SKILL.md
-        └── scripts/generate_image.py
+        └── LICENSE.txt
 ```
 
 ---
