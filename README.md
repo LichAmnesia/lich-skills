@@ -91,6 +91,7 @@ Agentic aggregation for long-horizon research. N raw notes → 1 structured pack
 | [`tavily-search`](skills/tavily-search/) | Web search + content extraction via the [Tavily](https://tavily.com) API. Use for fact-checking, docs lookup, source-cited research. |
 | [`nano-banana`](skills/nano-banana/) | Text-to-image and image editing via Google's Nano Banana 2 (`gemini-3.1-flash-image-preview`). Supports `512 / 1K / 2K / 4K`. |
 | [`frontend-design`](skills/frontend-design/) | Build distinctive, production-grade frontend interfaces — bold aesthetic direction, intentional typography, and motion that avoids generic AI-slop UI. Adapted from Anthropic's official `frontend-design` skill (Apache-2.0). |
+| [`subagent-brief`](skills/subagent-brief/) | Pre-flight discipline for spawning subagents. Anthropic does NOT share prefix across subagents — each one cold-starts on the full prompt. Compress every subagent prompt into a ≤200-word brief before spawning. Five rules + brief template + anti-rationalization table. Backed by arXiv 2604.25899 (Pythia, 2026). |
 
 All skills read credentials from environment variables (`TAVILY_API_KEY`, `GEMINI_API_KEY`, etc.) — never hardcoded.
 
@@ -108,7 +109,7 @@ Inside a running Claude Code session:
 /plugin install lich-skills@lich-skills
 ```
 
-Done. All six skills become available immediately. Verify:
+Done. All seven skills become available immediately. Verify:
 
 ```
 /skills
