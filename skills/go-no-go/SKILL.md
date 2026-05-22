@@ -327,7 +327,7 @@ memory:
 ```
 
 - **file** — single markdown file, one entry per session, simplest
-- **vault** — semantic search across an Obsidian / Logseq / Atomos vault
+- **vault** — semantic search across an Obsidian / Logseq / any markdown vault
 - **git** — `git log --grep` across a "decisions" repo
 
 `file` mode works with zero dependencies. `vault` and `git` modes are

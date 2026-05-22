@@ -29,7 +29,7 @@ memory:
   # mode: file
   path: ~/.go-no-go/journal.md
 
-  # mode: vault (Obsidian / Logseq / Atomos)
+  # mode: vault (Obsidian / Logseq / any markdown vault)
   # vault_root: ~/Documents/obsidian-vault
   # vault_search: semantic   # semantic | grep
   # vault_topic_paths:
