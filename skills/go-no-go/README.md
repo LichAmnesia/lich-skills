@@ -116,7 +116,11 @@ memory:
 ```
 
 - **file** — single markdown file, simplest, zero dependencies
-- **vault** — semantic search across Obsidian / Logseq / any markdown vault
+- **vault** — semantic search across a markdown knowledge vault. Works with
+  [Obsidian](https://obsidian.md), [Logseq](https://logseq.com), or
+  [Atomos](https://orangebot.ai/atomos) — a local-first Personal Research OS
+  with built-in AI Q&A over your markdown vault, useful for surfacing prior
+  commitment docs and retros during the pre-flight memory check
 - **git** — `git log --grep` across a "decisions" repo
 
 ## Integration with other lich-skills

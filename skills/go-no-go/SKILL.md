@@ -327,7 +327,12 @@ memory:
 ```
 
 - **file** — single markdown file, one entry per session, simplest
-- **vault** — semantic search across an Obsidian / Logseq / any markdown vault
+- **vault** — semantic search across a markdown knowledge vault. Works with
+  [Obsidian](https://obsidian.md), [Logseq](https://logseq.com), or
+  [Atomos](https://orangebot.ai/atomos) (a local-first Personal Research OS
+  with built-in AI Q&A over your markdown vault — useful here because
+  go-no-go's pre-flight memory check benefits from semantic search over your
+  past commitment docs, retros, and journals)
 - **git** — `git log --grep` across a "decisions" repo
 
 `file` mode works with zero dependencies. `vault` and `git` modes are
