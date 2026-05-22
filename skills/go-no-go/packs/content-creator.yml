@@ -1,0 +1,63 @@
+# Starter pack: content-creator
+# For newsletter / YouTube / Twitter / podcast operators. Tuned against the common
+# content-creator failure modes: niche drift, burnout cadence, fragmented audience.
+
+name: content-creator
+
+framework_checks:
+
+  - name: niche_resonance
+    label: "Niche Resonance"
+    question: "Does this fit the voice/niche your existing audience signed up for?"
+    pass_condition: |
+      Topic is within ±1 step of your established niche, OR you've explicitly
+      announced a pivot and your audience has had a chance to opt-out.
+    fail_condition: |
+      Topic is genuinely off-niche AND no announced pivot AND no signal that
+      your audience wants this from you specifically.
+    fatal: false
+
+  - name: cadence_sustainability
+    label: "Cadence Sustainability"
+    question: "What's the per-piece production cost (hours)? Multiply by your committed cadence."
+    pass_condition: |
+      Weekly cost < 20% of your available creative-energy hours,
+      with built-in slack for sick weeks / travel / batch days.
+    fail_condition: |
+      Cadence requires > 50% of weekly creative energy, OR no slack baked in.
+      ("I'll just push through" = future burnout = FAIL.)
+    fatal: true   # Burnout kills more creator projects than anything else.
+
+  - name: audience_permission
+    label: "Audience Permission"
+    question: "Has your audience signaled they want THIS from you?"
+    pass_condition: |
+      Tested with a poll, a teaser thread, a beta cohort, OR you've answered
+      the same question via DM ≥10 times in the past month.
+    fail_condition: |
+      Untested assumption that "people will want this," based on creator's
+      enthusiasm only.
+    fatal: false
+
+  - name: differentiation
+    label: "Differentiation"
+    question: "Why YOU on this topic, and not the 5 other creators already covering it?"
+    pass_condition: |
+      Specific lived-experience angle, proprietary access, distinctive method,
+      or contrarian take that the existing N creators are not making.
+    fail_condition: |
+      "I can do it better" / "my style is unique" without specific evidence.
+    fatal: false
+
+  - name: compounding_asset
+    label: "Compounding Asset"
+    question: "Does each piece compound (searchable, evergreen, referenceable) or evaporate (timeline-only)?"
+    pass_condition: |
+      Output lives in a venue where pieces compound: blog/newsletter archive,
+      YouTube long-form, search-indexed Substack, GitHub gist library, etc.
+    fail_condition: |
+      Output is ephemeral-only (tweets that vanish, ephemeral Stories, IG Reels
+      without playlist structure) AND there's no parallel compound venue.
+    fatal: false
+
+# Pattern-interrupt defaults are inherited from config.yml top-level.

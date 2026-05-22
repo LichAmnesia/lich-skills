@@ -8,6 +8,33 @@ Telegraph-style, opinionated, no filler. Engineering judgment skills plus high-l
 
 ---
 
+## The go-no-go gate (Stage 0)
+
+```
+                          ┌─────────────────────────────────────┐
+                          │   NO-GO is the default.             │
+                          │   GO requires evidence.             │
+                          └──────────────┬──────────────────────┘
+                                         │
+   MEMORY     →   HYPOTHESIS   →   FIVE CHECKS    →   24h INTERRUPT?   →   COMMITMENT
+ ┌────────┐    ┌─────────────┐  ┌────────────────┐  ┌──────────────┐   ┌──────────────┐
+ │ Search │    │ One-sentence│  │ Differentiation│  │ Enthusiasm   │   │ Public doc + │
+ │ prior  │───▶│ guess +     │─▶│ Audience-fit   │─▶│ high? Wait   │──▶│ kill criteria│
+ │ tries  │    │ confidence% │  │ Acquisition    │  │ 24h, restart │   │ D14/30/60/90 │
+ └────────┘    └─────────────┘  │ Capacity       │  └──────────────┘   └──────┬───────┘
+                                │ 7-Factor Wedge │                            │
+                                └────────────────┘                            │
+                                                                              ▼
+                                                                       GO  → spec-driven-dev
+                                                                       NO-GO → journal entry
+```
+
+Stage 0 before any `/spec`. Five framework gates, mandatory memory check against
+prior attempts, 24h pattern-interrupt for high-enthusiasm signals, public commitment
+artifact with pre-mortemed kill criteria. See [`skills/go-no-go/`](skills/go-no-go/).
+
+---
+
 ## The spec-driven-dev loop
 
 ```
@@ -20,7 +47,8 @@ Telegraph-style, opinionated, no filler. Engineering judgment skills plus high-l
      └─────────────────── feedback / regression ──────────────────────┘
 ```
 
-One skill, six phases, explicit exit criteria per step. See [`skills/spec-driven-dev/`](skills/spec-driven-dev/).
+One skill, six phases, explicit exit criteria per step. Pairs with `go-no-go` as
+Stage 1 of the pipeline. See [`skills/spec-driven-dev/`](skills/spec-driven-dev/).
 
 ---
 
@@ -85,7 +113,8 @@ Agentic aggregation for long-horizon research. N raw notes → 1 structured pack
 
 | Skill | What it does |
 |---|---|
-| [`spec-driven-dev`](skills/spec-driven-dev/) | Full SDLC workflow: Spec → Plan → Build → Test → Review → Ship. Anti-rationalization tables, verification gates, atomic commits. |
+| [`go-no-go`](skills/go-no-go/) | **Stage 0 gate — NO-GO is the default.** Runs before `/spec` to decide whether a project should start at all. Memory check against prior attempts + 5 framework gates (Differentiation · Audience–Market Fit · Acquisition Channel · Capacity · 7-Factor Wedge) + 24h pattern-interrupt if enthusiasm-high + public commitment doc with D14/D30/D60/D90 kill criteria. 3 starter packs (solo-founder · indie-dev · content-creator). |
+| [`spec-driven-dev`](skills/spec-driven-dev/) | Full SDLC workflow: Spec → Plan → Build → Test → Review → Ship. Anti-rationalization tables, verification gates, atomic commits. Pairs with `go-no-go` as Stage 1 of the pipeline. |
 | [`debug-hypothesis`](skills/debug-hypothesis/) | Scientific-method debugging: Observe → Hypothesize → Experiment → Conclude. Anti-bulldozer rules, max 5-line experiments, mandatory `DEBUG.md` evidence trail. |
 | [`wiki-aggregate`](skills/wiki-aggregate/) | Lift N≥3 raw research artifacts into one structured pack via agentic aggregation. Cheap-pass + tool-budgeted aggregator loop, every claim has `path:line` provenance, cross-source contradictions logged. |
 | [`tavily-search`](skills/tavily-search/) | Web search + content extraction via the [Tavily](https://tavily.com) API. Use for fact-checking, docs lookup, source-cited research. |

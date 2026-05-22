@@ -1,0 +1,117 @@
+# ~/.go-no-go/config.yml
+# Full schema. All fields optional except `signed_by`.
+# If a config file does not exist, the skill prompts to pick a starter pack on first run.
+
+# Pick a starter pack OR set to "custom" and define framework_checks yourself
+starter_pack: solo-founder   # solo-founder | indie-dev | content-creator | custom
+
+# ---------------------------------------------------------------------------
+# Framework checks
+# ---------------------------------------------------------------------------
+# If starter_pack is set and you do NOT override framework_checks, the pack's
+# defaults are used. If you set framework_checks here, it REPLACES the pack.
+# To extend a pack instead of replacing, use `framework_checks_add`.
+
+framework_checks_add:
+  - name: my_custom_check
+    question: "Will this make me less interesting in 12 months?"
+    pass_condition: "Hard NO — this builds compound interest in my expertise"
+    fail_condition: "Yes or maybe"
+    fatal: true     # If true, FAIL forces NO-GO even with override
+
+# ---------------------------------------------------------------------------
+# Memory store
+# ---------------------------------------------------------------------------
+
+memory:
+  mode: file         # file | vault | git
+
+  # mode: file
+  path: ~/.go-no-go/journal.md
+
+  # mode: vault (Obsidian / Logseq / Atomos)
+  # vault_root: ~/Documents/obsidian-vault
+  # vault_search: semantic   # semantic | grep
+  # vault_topic_paths:
+  #   - decisions/
+  #   - retrospectives/
+
+  # mode: git
+  # git_repo: ~/decisions
+  # git_search: --grep --all
+
+# ---------------------------------------------------------------------------
+# Pattern interrupt
+# ---------------------------------------------------------------------------
+
+pattern_interrupt:
+  enabled: true
+  cooldown_hours: 24
+
+  # Phrases that trigger the cooldown when detected in user's responses
+  enthusiasm_keywords:
+    - "I'm excited"
+    - "I'm so excited"
+    - "let's go"
+    - "let's do this"
+    - "I just want to start"
+    - "this is genius"
+    - "I can already see"
+    - "no-brainer"
+
+  # If user has K commitment docs in last N days, lower cooldown threshold
+  recent_commitments_threshold:
+    count: 2
+    days: 30
+    extra_cooldown_hours: 48   # adds to base if threshold exceeded
+
+# ---------------------------------------------------------------------------
+# Public commitment
+# ---------------------------------------------------------------------------
+
+public_commitment:
+  enabled: true            # set to false to allow private commitments
+  mode: gist               # gist | github_repo | local | substack_draft | twitter_draft
+
+  # mode: gist (uses `gh` CLI)
+  gh_user: yourname        # GitHub username
+  gist_visibility: public  # public | secret
+
+  # mode: github_repo
+  # repo: yourname/commitments
+  # path_template: "{YYYY}/{MM}/{slug}.md"
+
+  # mode: substack_draft
+  # substack_publication: yourname.substack.com
+  # publish: false         # generate draft only
+
+  # mode: twitter_draft
+  # output: ~/.go-no-go/twitter-drafts/{slug}.md
+
+# ---------------------------------------------------------------------------
+# Review schedule
+# ---------------------------------------------------------------------------
+
+review_schedule:
+  enabled: true
+  intervals_days: [14, 30, 60, 90]
+  calendar_integration: none   # none | ics | google_calendar
+  # If 'ics', writes an .ics file alongside the commitment doc
+  # If 'google_calendar', requires OAuth (see docs/calendar-setup.md)
+
+# ---------------------------------------------------------------------------
+# Identity
+# ---------------------------------------------------------------------------
+
+signed_by: "Your Name"
+twitter_handle: "@yourhandle"   # optional, used in public commitment doc
+
+# ---------------------------------------------------------------------------
+# Output
+# ---------------------------------------------------------------------------
+
+output:
+  base_dir: runs/                # session folders go here
+  language: en                   # en | zh
+  commitment_filename: commitment.md
+  transcript_filename: transcript.md

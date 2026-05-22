@@ -1,0 +1,81 @@
+# Starter pack: solo-founder
+# For solo operators building products. Tuned against the common solo-founder
+# failure mode: starting many things, finishing few, with audience–payer mismatch.
+
+name: solo-founder
+
+framework_checks:
+
+  - name: differentiation
+    label: "Differentiation"
+    question: "Can a competent operator clone 80% of this in 2 weeks?"
+    pass_condition: |
+      Structural moat identified — one of:
+        - Proprietary asset you own (data / IP / distribution)
+        - Exclusive relationship (partner, customer)
+        - Regulatory / certification advantage
+        - Network effect that strengthens with usage
+        - Domain authority transferred from your existing reputation
+    fail_condition: |
+      Moat is effort-based ("I'll work harder") or taste-based
+      ("my version will be better") only.
+    fatal: false   # FAIL is overridable with structural reason
+
+  - name: audience_market_fit
+    label: "Audience–Market Fit"
+    question_a: "Who pays for this? Approximate annual income / budget bracket?"
+    question_b: "Who follows your work? Approximate bracket?"
+    pass_condition: "Brackets within ~2–3× of each other."
+    fail_condition: "Brackets more than 3× apart."
+    narrative: |
+      When payers and followers live on different planets, neither becomes
+      the other. Demand strength does not compensate.
+    fatal: false
+
+  - name: acquisition_channel
+    label: "Acquisition Channel"
+    question: "Where do the FIRST 100 customers/users come from? Be specific."
+    pass_examples:
+      - "Confirmed warm channel with X confirmed reach"
+      - "Shipped 3+ pieces of content on platform Y that this audience reads"
+      - "Named partner Z has confirmed introductions to N customers"
+    fail_examples:
+      - "'I'll post on social media' (without specific hook + 90-day cadence)"
+      - "'Build it and they will come'"
+      - "'Marketplaces will deliver users' — Gumroad / App Store / Etsy are checkout, not discovery"
+    fatal: true   # Acquisition is the most-fatal check. NO override.
+
+  - name: capacity
+    label: "Capacity"
+    question_a: "Which capacity does this require? (creative / analytical / operational / social / executional)"
+    question_b: "Of your 5 capacities, which 2 are currently NOT bottlenecked?"
+    pass_condition: |
+      Required capacity is in the user's currently-available set
+      AND user has fewer than 2 parallel projects requiring same capacity.
+    fail_condition: |
+      Required capacity is currently saturated,
+      OR user already has 2 parallel projects requiring same capacity.
+    fatal: false
+
+  - name: wedge_seven
+    label: "7-Factor Wedge"
+    factors:
+      - asset_match:
+          q: "Does this leverage an existing asset you own?"
+      - day_zero_warm_channel:
+          q: "Specific source for first 100 users?"
+      - domain_authority_fit:
+          q: "Does your reputation transfer to this domain?"
+      - solo_executable:
+          q: "Can you ship V0 alone in < 30 days?"
+      - moat_compounds:
+          q: "Does the moat strengthen with usage?"
+      - cash_horizon:
+          q: "Break-even < 12 months OR funded by independent stream?"
+      - exit_optionality:
+          q: "Can you stop in 30 days with reusable salvage?"
+    pass_condition: "5+ of 7 factors pass."
+    fail_condition: "Any 2 factors fail → AUTOMATIC NO-GO."
+    fatal: true   # Cumulative wedge failure cannot be overridden.
+
+# Pattern-interrupt defaults are inherited from config.yml top-level.

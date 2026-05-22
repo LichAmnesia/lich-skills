@@ -1,0 +1,64 @@
+# Starter pack: indie-dev
+# For technical builders without a marketing focus. Tuned against the common
+# indie-dev failure mode: building tools that solve problems users don't have
+# loudly enough to pay for, plus underestimating ops burden.
+
+name: indie-dev
+
+framework_checks:
+
+  - name: maintenance_burden
+    label: "Maintenance Burden"
+    question: "What is the ongoing operational cost AFTER ship? Hours/week, $/month?"
+    pass_condition: |
+      Total ongoing burden < 4 hrs/week AND < $50/month
+      OR explicitly funded (revenue covers + 2x margin)
+    fail_condition: |
+      Ongoing burden requires daily attention,
+      OR fixed monthly cost without revenue plan,
+      OR depends on a third-party API that may shift pricing.
+    fatal: false
+
+  - name: skills_match
+    label: "Skills Match"
+    question: "Do you actually want to LEARN this stack — or do you already know it?"
+    pass_condition: |
+      You either know it well, OR you've earmarked learning as a primary goal
+      and are okay with shipping slower because of it.
+    fail_condition: |
+      The stack is alien AND speed-to-ship matters AND learning is incidental.
+      ("I'll figure out Rust as I go" for a 30-day project = FAIL.)
+    fatal: false
+
+  - name: side_project_tax
+    label: "Side-Project Tax"
+    question: "Will running this side project make your day-job (or main project) harder?"
+    pass_condition: |
+      Mental overhead is bounded, code is independent, no shared on-call.
+    fail_condition: |
+      Cognitive context-switching cost is real, this competes with your
+      day-job energy, on-call overlap likely.
+    fatal: false
+
+  - name: differentiation
+    label: "Differentiation"
+    question: "Can a competent dev clone 80% of this in 2 weeks?"
+    pass_condition: |
+      Differentiation is from an asset you've already built (curated dataset,
+      existing user base, integration depth, etc.) OR a non-obvious technical
+      decision that others would not make.
+    fail_condition: |
+      "Better UX" or "cleaner code" as the only differentiator.
+    fatal: false
+
+  - name: thirty_day_demo
+    label: "30-Day Demo Test"
+    question: "Can you produce a demo-able artifact (screencast / live URL) in 30 days?"
+    pass_condition: |
+      Clear path to a demo in 30 days, with a defined scope cut you'll accept.
+    fail_condition: |
+      Demo requires N integrations / N polish passes / "well, ideally..." caveats.
+      Indie projects that can't be demoed at 30 days usually die at 90.
+    fatal: true   # No demo at D30 = will die at D90.
+
+# Pattern-interrupt defaults are inherited from config.yml top-level.
