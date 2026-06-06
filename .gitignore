@@ -33,9 +33,8 @@ pnpm-debug.log*
 credentials.json
 service-account*.json
 
-# Local plugin overrides
-.claude/*.local.md
-.claude/settings.local.json
+# Local plugin overrides + session runtime artifacts
+.claude/
 
 # Build artifacts
 dist/

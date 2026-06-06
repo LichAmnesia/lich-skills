@@ -90,6 +90,7 @@ English: [README.md](README.md)
 | [`tavily-search`](skills/tavily-search/) | 通过 [Tavily](https://tavily.com) API 做网页搜索 + 正文抽取。用于事实核查、文档查询、带引用的研究。 |
 | [`nano-banana`](skills/nano-banana/) | 文生图 + 图片编辑，基于 Google Nano Banana 2 (`gemini-3.1-flash-image-preview`)，支持 `512 / 1K / 2K / 4K`。 |
 | [`frontend-design`](skills/frontend-design/) | 做有辨识度、production-grade 的前端 UI —— 强调审美方向、有意图的字体选择、避免"AI slop"通用感。改编自 Anthropic 官方 `frontend-design` skill（Apache-2.0）。 |
+| [`google-analytics`](skills/google-analytics/) | 分析 GA4 数据，并开箱即用一个 **SEO 日报**——只给一个 property 就能产出：自然搜索 KPI（28天 vs 前28天）、同星期几异常检测、自然搜索 top 落地页、按搜索引擎/国家/设备拆分、带优先级的建议。另含通用分析（overview / sources / content / devices / seo）。脚本用 **TypeScript**（Bun / `npx tsx`），基于官方 `@google-analytics/data` 客户端，自动识别 `conversions`↔`keyEvents`。凭据从环境变量读取（`GOOGLE_ANALYTICS_PROPERTY_ID` + service-account JSON）。 |
 
 所有技能都从环境变量读取凭据（`TAVILY_API_KEY`、`GEMINI_API_KEY` 等）—— **绝不硬编码**。
 

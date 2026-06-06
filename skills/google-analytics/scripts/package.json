@@ -1,0 +1,15 @@
+{
+  "name": "google-analytics-skill-scripts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "TypeScript scripts for the google-analytics Claude Code skill — GA4 Data API client + analyzer.",
+  "scripts": {
+    "report": "bun run daily-report.ts",
+    "client": "bun run ga-client.ts",
+    "analyze": "bun run analyze.ts"
+  },
+  "dependencies": {
+    "@google-analytics/data": "^4.12.0"
+  }
+}
