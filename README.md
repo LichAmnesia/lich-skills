@@ -109,6 +109,31 @@ Agentic aggregation for long-horizon research. N raw notes → 1 structured pack
 
 ---
 
+## The build-until-pass loop
+
+```
+        ┌──────────────────────────────────────────────┐
+        │  attempt > MAX (default 10)?                  │
+        │  → STOP, report what's left, hand to human    │
+        └───────────────────────┬──────────────────────┘
+                                │ no
+   RUN CHECK ──▶ exit 0? ──yes──▶  DONE  (green = exit code, not opinion)
+       ▲             │
+       │             │ no (red)
+       │             ▼
+       │      READ first error  ──▶  FIX smallest  ──▶  re-RUN
+       │      verbatim, file:line    minimal diff,        │
+       │                             never fake green     │
+       └─────────────────────────────────────────────────┘
+              one round = one fix + one re-run + one-line report
+```
+
+Turns the human out of the run → read error → fix one line → run again loop,
+and caps the agent so it can't bulldoze 200-line speculative rewrites between
+runs. Refuses to fake green (`@ts-ignore`, deleting tests, `|| true`). See [`skills/build-until-pass/`](skills/build-until-pass/).
+
+---
+
 ## Skills
 
 | Skill | What it does |
@@ -122,6 +147,7 @@ Agentic aggregation for long-horizon research. N raw notes → 1 structured pack
 | [`frontend-design`](skills/frontend-design/) | Build distinctive, production-grade frontend interfaces — bold aesthetic direction, intentional typography, and motion that avoids generic AI-slop UI. Adapted from Anthropic's official `frontend-design` skill (Apache-2.0). |
 | [`google-analytics`](skills/google-analytics/) | Analyze GA4 data + ship an out-of-the-box **SEO daily report** — point it at one property and get organic KPIs (28d-vs-prior-28d), same-weekday anomaly detection, top organic landing pages, by-engine/country/device cuts, and prioritized recommendations. Plus general analyses (overview / sources / content / devices / seo). **TypeScript** scripts (Bun / `npx tsx`) over the official `@google-analytics/data` client, `conversions`↔`keyEvents` auto-detect. Reads `GOOGLE_ANALYTICS_PROPERTY_ID` + service-account JSON from env. |
 | [`subagent-brief`](skills/subagent-brief/) | Pre-flight discipline for spawning subagents. Anthropic does NOT share prefix across subagents — each one cold-starts on the full prompt. Compress every subagent prompt into a ≤200-word brief before spawning. Five rules + brief template + anti-rationalization table. Backed by arXiv 2604.25899 (Pythia, 2026). |
+| [`build-until-pass`](skills/build-until-pass/) | Bounded self-correcting loop: run the build/typecheck/test command → read the first error → apply the smallest fix → re-run → repeat until **exit code 0** or a hard attempt cap (default 10). Green is the exit code, not the agent's opinion. Minimal-diff-per-round + cap kill both failure modes — human-as-while-loop and agent-as-bulldozer. Refuses to fake green (`@ts-ignore`, deleting tests, `\|\| true`). |
 
 All skills read credentials from environment variables (`TAVILY_API_KEY`, `GEMINI_API_KEY`, etc.) — never hardcoded.
 
@@ -139,7 +165,7 @@ Inside a running Claude Code session:
 /plugin install lich-skills@lich-skills
 ```
 
-Done. All seven skills become available immediately. Verify:
+Done. All skills become available immediately. Verify:
 
 ```
 /skills

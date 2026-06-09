@@ -16,7 +16,7 @@
         "source": "github",
         "repo": "LichAmnesia/lich-skills"
       },
-      "description": "go-no-go Stage 0 gate (NO-GO is the default) + Spec → Plan → Build → Test → Review → Ship workflow + debug-hypothesis + wiki-aggregate + Tavily web search + Nano Banana image generation + frontend-design aesthetics guide + subagent-brief token discipline."
+      "description": "go-no-go Stage 0 gate (NO-GO is the default) + Spec → Plan → Build → Test → Review → Ship workflow + debug-hypothesis + wiki-aggregate + Tavily web search + Nano Banana image generation + frontend-design aesthetics guide + subagent-brief token discipline + build-until-pass self-correcting build loop."
     }
   ]
 }
